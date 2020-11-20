@@ -1,0 +1,76 @@
+.ycrv-valut-container {
+  width: 100%;
+
+  .content-1 {
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .content-2 {
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-right: 10%;
+    padding-top: 90px;
+    padding-bottom: 150px;
+    box-sizing: border-box;
+
+    background: url("../../assets/images/vault-image.png");
+    background-position: right 30%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+  }
+
+  .mine-open {
+    background: #0541c6;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 400px;
+    color: #fff;
+    box-sizing: border-box;
+    padding: 32px 16px;
+    border-radius: 8px;
+    margin-top: 30px;
+
+    span {
+      font-size: 12px;
+    }
+
+    .date {
+      display: flex;
+      flex-direction: row;
+      font-size: 1rem;
+      width: 100%;
+      margin-top: 25px;
+      margin-bottom: 25px;
+      padding-left: 16px;
+      padding-right: 16px;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-content: center;
+        align-items: center;
+        font-weight: 700;
+
+        .number {
+          font-size: 2.5rem;
+        }
+
+        .desc {
+          font-size: 0.9rem;
+        }
+      }
+      .divider {
+        width: 1px;
+        height: 65px;
+        background: #00b9ea;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

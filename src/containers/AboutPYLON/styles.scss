@@ -1,0 +1,263 @@
+.about-container {
+  width: 100%;
+
+  // background: url("../../assets/images/sub-bg1.png");
+  background-position-y: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  .content-1 {
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 100%;
+
+    background: url("../../assets/images/about-pylon-bg.png");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  .content-2 {
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 100%;
+    margin-top: 100px;
+
+    background: url("../../assets/images/sub-bg2.png");
+    background-position-y: 40px;
+    background-repeat: no-repeat;
+    // background-size: contain;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  .content-3 {
+    padding-left: 15%;
+    padding-right: 15%;
+    width: 100%;
+
+    background: url("../../assets/images/sub-bg1.png");
+    background-position-y: 40px;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  .section-title {
+    padding-top: 60px;
+
+    .page-title {
+      font-size: 4rem;
+      color: #fff;
+      letter-spacing: 0.3rem;
+    }
+
+    .page-sub-title {
+      color: #6674d7;
+      letter-spacing: 1.35rem;
+      padding-top: 10px;
+    }
+  }
+
+  .section-concept {
+    margin-top: 40px;
+    display: flow-root;
+  }
+
+  .section-text {
+    float: left;
+  }
+
+  .about-background {
+    margin-top: 32px;
+    background: url("../../assets/images/about-pylon-bg.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right bottom;
+    float: right;
+  }
+
+  .section-pylon-mine {
+    display: flex;
+    flex-direction: row;
+    margin-top: 200px;
+
+    @media screen and (max-width: 1024px) {
+      flex-direction: column;
+    }
+
+    .left {
+      h2 {
+        font-size: 2rem;
+        color: #00b9eb;
+      }
+
+      p {
+        color: #fff;
+        font-size: 1rem;
+      }
+    }
+
+    .right {
+      color: #fff;
+      text-align: right;
+      padding-top: 60px;
+      flex: 1;
+
+      @media screen and (max-width: 1024px) {
+        text-align: left;
+        padding-top: 20px;
+      }
+
+      .section1 {
+        font-size: 1.2rem;
+        margin-bottom: 7px;
+        width: 100%;
+      }
+
+      .section2 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        width: 100%;
+      }
+
+      span {
+        color: #ff8200;
+        width: 100%;
+      }
+    }
+  }
+
+  .section-pylon-value {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    // padding-right: 20%;
+    // justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .left {
+      .mine-open {
+        background: #1a2275;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        width: 400px;
+        color: #fff;
+        box-sizing: border-box;
+        padding: 32px 16px;
+        box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 1),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        @media screen and (max-width: 768px) {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        span {
+          font-size: 12px;
+        }
+
+        .date {
+          display: flex;
+          flex-direction: row;
+          font-size: 1rem;
+          width: 100%;
+          margin-top: 25px;
+          margin-bottom: 25px;
+          padding-left: 16px;
+          padding-right: 16px;
+
+          .item {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-content: center;
+            align-items: center;
+            font-weight: 700;
+
+            .number {
+              font-size: 2.5rem;
+            }
+
+            .desc {
+              font-size: 0.9rem;
+            }
+          }
+          .divider {
+            width: 1px;
+            height: 65px;
+            background: #3645b6;
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+
+      @media screen and (max-width: 768px) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+      }
+      .pylon-faq-brochure {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        box-sizing: border-box;
+
+        @media screen and (max-width: 768px) {
+          width: 100% !important;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  .section-pylon-path {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .section-quarter {
+    .quarter {
+      margin-top: 10px;
+    }
+  }
+
+  .hr {
+    border: none;
+    margin-top: 38px;
+    margin-bottom: 44px;
+    border-top: 3px dotted #1679db;
+    height: 1px;
+  }
+
+  .quarter-footer {
+    height: 100px;
+  }
+}
