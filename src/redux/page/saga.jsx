@@ -15,16 +15,7 @@ import axios from "axios";
 import BigNumber from "bignumber.js";
 
 import { TOKEN_ABI, ABI_VAULT, ABI_VAULT_ETH } from "../../helpers/constant";
-import { FDI_VAULT, ADDR_ETH_VAULT } from "../../helpers/fdiVault/constants";
-import { PYLON_VAULT } from "../../helpers/pylonVault/constants";
-
-// import {
-//   MASTER_VAMPIRE_ADDRESS,
-//   MASTER_VAMPIRE_ABI,
-//   TOKEN_ABI,
-//   NERDLING_POOL,
-// } from '../../helper/constants'
-// import { add } from 'numeral'
+import { ADDR_ETH_VAULT } from "../../helpers/fdiVault/constants";
 
 /**
  * Load Web3.js
@@ -137,7 +128,7 @@ const getReservesAsync = async (instance) => {
 
 const getAvailableRewardAmountAsync = async (instance, address) => {
   return await instance.methods
-    .availableRewardAmount(address)
+    .getRewardAmount(address)
     .call()
     .then((data) => {
       return data;
@@ -149,7 +140,7 @@ const getAvailableRewardAmountAsync = async (instance, address) => {
 
 const getDepositBalancesAsync = async (instance, address) => {
   return await instance.methods
-    .depositBalances(address)
+    ._depositBalances(address)
     .call()
     .then((data) => {
       return data;
@@ -161,7 +152,7 @@ const getDepositBalancesAsync = async (instance, address) => {
 
 const getRewardBalancesAsync = async (instance, address) => {
   return await instance.methods
-    .rewardBalances(address)
+    .getRewardAmount(address)
     .call()
     .then((data) => {
       return data;
@@ -173,7 +164,7 @@ const getRewardBalancesAsync = async (instance, address) => {
 
 const getTotalDepositAsync = async (instance) => {
   return await instance.methods
-    .totalDeposit()
+    ._totalDeposit()
     .call()
     .then((data) => {
       return data;
@@ -329,42 +320,42 @@ const depositAsync = async (instance, tokenAddress, web3, amount, address) => {
     });
 };
 
-const depositAllAsync = async (instance, web3, address) => {
-  const response = await axios.get(
-    "https://ethgasstation.info/json/ethgasAPI.json"
-  );
-  let prices = {
-    low: response.data.safeLow / 10,
-    medium: response.data.average / 10,
-    high: response.data.fast / 10,
-    fastest: Math.round(response.data.fastest / 10),
-  };
+// const depositAllAsync = async (instance, web3, address) => {
+//   const response = await axios.get(
+//     "https://ethgasstation.info/json/ethgasAPI.json"
+//   );
+//   let prices = {
+//     low: response.data.safeLow / 10,
+//     medium: response.data.average / 10,
+//     high: response.data.fast / 10,
+//     fastest: Math.round(response.data.fastest / 10),
+//   };
 
-  const gasLimit = await instance.methods
-    .depositAll()
-    .estimateGas({ from: address })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.log(error);
-      return error;
-    });
+//   const gasLimit = await instance.methods
+//     .depositAll()
+//     .estimateGas({ from: address })
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       return error;
+//     });
 
-  return await instance.methods
-    .depositAll()
-    .send({
-      from: address,
-      gasPrice: web3.utils.toWei(prices.medium.toString(), "gwei"),
-      gas: Math.floor(gasLimit * 1.1),
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      return error;
-    });
-};
+//   return await instance.methods
+//     .depositAll()
+//     .send({
+//       from: address,
+//       gasPrice: web3.utils.toWei(prices.medium.toString(), "gwei"),
+//       gas: Math.floor(gasLimit * 1.1),
+//     })
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// };
 
 const withdrawAsync = async (instance, tokenAddress, web3, amount, address) => {
   const response = await axios.get(
@@ -417,42 +408,42 @@ const withdrawAsync = async (instance, tokenAddress, web3, amount, address) => {
     });
 };
 
-const withdrawAllAsync = async (instance, web3, address) => {
-  const response = await axios.get(
-    "https://ethgasstation.info/json/ethgasAPI.json"
-  );
-  let prices = {
-    low: response.data.safeLow / 10,
-    medium: response.data.average / 10,
-    high: response.data.fast / 10,
-    fastest: Math.round(response.data.fastest / 10),
-  };
+// const withdrawAllAsync = async (instance, web3, address) => {
+//   const response = await axios.get(
+//     "https://ethgasstation.info/json/ethgasAPI.json"
+//   );
+//   let prices = {
+//     low: response.data.safeLow / 10,
+//     medium: response.data.average / 10,
+//     high: response.data.fast / 10,
+//     fastest: Math.round(response.data.fastest / 10),
+//   };
 
-  const gasLimit = await instance.methods
-    .withdrawAll()
-    .estimateGas({ from: address })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      console.log(error);
-      return error;
-    });
+//   const gasLimit = await instance.methods
+//     .withdrawAll()
+//     .estimateGas({ from: address })
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       return error;
+//     });
 
-  return await instance.methods
-    .withdrawAll()
-    .send({
-      from: address,
-      gasPrice: web3.utils.toWei(prices.medium.toString(), "gwei"),
-      gas: Math.floor(gasLimit * 1.1),
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      return error;
-    });
-};
+//   return await instance.methods
+//     .withdrawAll()
+//     .send({
+//       from: address,
+//       gasPrice: web3.utils.toWei(prices.medium.toString(), "gwei"),
+//       gas: Math.floor(gasLimit * 1.1),
+//     })
+//     .then((data) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       return error;
+//     });
+// };
 
 const claimRewardAsync = async (instance, web3, amount, address) => {
   const response = await axios.get(
@@ -916,34 +907,34 @@ export function* depositToken() {
   });
 }
 
-export function* depositAllToken() {
-  yield takeLatest(actions.DEPOSIT_TOKEN_ALL, function* ({ payload }) {
-    const { vaultAddress, callback } = payload;
+// export function* depositAllToken() {
+//   yield takeLatest(actions.DEPOSIT_TOKEN_ALL, function* ({ payload }) {
+//     const { vaultAddress, callback } = payload;
 
-    let web3;
-    try {
-      web3 = yield call(getWeb3);
-    } catch(e) {
-      callback(false) 
-      return
-    }
+//     let web3;
+//     try {
+//       web3 = yield call(getWeb3);
+//     } catch(e) {
+//       callback(false) 
+//       return
+//     }
 
-    const abi = ABI_VAULT;
-    const instance = new web3.eth.Contract(abi, vaultAddress);
+//     const abi = ABI_VAULT;
+//     const instance = new web3.eth.Contract(abi, vaultAddress);
 
-    // Get Wallet Account
-    const accounts = yield call(web3.eth.getAccounts);
+//     // Get Wallet Account
+//     const accounts = yield call(web3.eth.getAccounts);
 
-    const depositAllResult = yield call(
-      depositAllAsync,
-      instance,
-      web3,
-      accounts[0]
-    );
-    console.log(depositAllResult);
-    callback(depositAllResult.status);
-  });
-}
+//     const depositAllResult = yield call(
+//       depositAllAsync,
+//       instance,
+//       web3,
+//       accounts[0]
+//     );
+//     console.log(depositAllResult);
+//     callback(depositAllResult.status);
+//   });
+// }
 
 export function* withdrawToken() {
   yield takeLatest(actions.WITHDRAW_TOKEN, function* ({ payload }) {
@@ -975,33 +966,33 @@ export function* withdrawToken() {
   });
 }
 
-export function* withdrawAllToken() {
-  yield takeLatest(actions.WITHDRAW_TOKEN_ALL, function* ({ payload }) {
-    const { vaultAddress, callback } = payload;
+// export function* withdrawAllToken() {
+//   yield takeLatest(actions.WITHDRAW_TOKEN_ALL, function* ({ payload }) {
+//     const { vaultAddress, callback } = payload;
 
-    let web3;
-    try {
-      web3 = yield call(getWeb3);
-    } catch(e) {
-      callback(false) 
-      return
-    }
-    const abi = ABI_VAULT;
-    const instance = new web3.eth.Contract(abi, vaultAddress);
+//     let web3;
+//     try {
+//       web3 = yield call(getWeb3);
+//     } catch(e) {
+//       callback(false) 
+//       return
+//     }
+//     const abi = ABI_VAULT;
+//     const instance = new web3.eth.Contract(abi, vaultAddress);
 
-    // Get Wallet Account
-    const accounts = yield call(web3.eth.getAccounts);
+//     // Get Wallet Account
+//     const accounts = yield call(web3.eth.getAccounts);
 
-    const withdrawAllResult = yield call(
-      withdrawAllAsync,
-      instance,
-      web3,
-      accounts[0]
-    );
-    console.log(withdrawAllResult);
-    callback(withdrawAllResult.status);
-  });
-}
+//     const withdrawAllResult = yield call(
+//       withdrawAllAsync,
+//       instance,
+//       web3,
+//       accounts[0]
+//     );
+//     console.log(withdrawAllResult);
+//     callback(withdrawAllResult.status);
+//   });
+// }
 
 export function* claimReward() {
   yield takeLatest(actions.CLAIM_REWARD, function* ({ payload }) {
@@ -1147,9 +1138,9 @@ export default function* rootSaga() {
     fork(getTotalDeposit),
     fork(approveToken),
     fork(depositToken),
-    fork(depositAllToken),
+    // fork(depositAllToken),
     fork(withdrawToken),
-    fork(withdrawAllToken),
+    // fork(withdrawAllToken),
     fork(claimReward),
     fork(claimRewardAll),
     fork(sendRewardAmount),
