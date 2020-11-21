@@ -50,7 +50,9 @@ export default function FDIVault() {
               directly{` `}
               <br />
               to the funding of GPU mines and will not available to be
-              withdrawn.
+              withdrawn.{` `}
+              <br />
+              As well as .5% fee for FDI vaults.
             </p>
           </TextBlock>
           {/* <div className="section mine-open">
