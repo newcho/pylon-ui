@@ -49,7 +49,7 @@ export default function FDIVault() {
               DISCLAIMER: Any principle contributed to this vault will go
               directly{` `}
               <br />
-              to the funding of GPU mines and will not available to be
+              to the funding of GPU mines and will not be available to be
               withdrawn.{` `}
               <br />
               As well as .5% fee for FDI vaults.
