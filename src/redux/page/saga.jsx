@@ -150,6 +150,18 @@ const getDepositBalancesAsync = async (instance, address) => {
     });
 };
 
+const getLastRewardAsync = async (instance, id) => {
+  return await instance.methods
+    ._rewards(id)
+    .call()
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
+
 const getRewardBalancesAsync = async (instance, address) => {
   return await instance.methods
     .getRewardAmount(address)
@@ -754,6 +766,57 @@ export function* getDepositBalances() {
   });
 }
 
+export function* getLastReward() {
+  yield takeEvery(actions.GET_LAST_REWARD, function* ({ payload }) {
+    const { vaultAddress, callback } = payload;
+
+    let web3;
+    try {
+      web3 = yield call(getWeb3);
+    } catch(e) {
+      callback(0)
+      return
+    }
+
+    const abi = ABI_VAULT;
+    const instance = new web3.eth.Contract(abi, vaultAddress);
+
+    let lastReward = 0;
+
+    let i = 0;
+
+    let loop = true;
+    while (loop == true) {
+      let result = yield call(
+        getLastRewardAsync,
+        instance,
+        i
+      );
+      
+
+      console.log(i, lastReward)
+      i++;
+
+      if (result.code == -32000) {
+        loop = false
+      } else {
+        console.log("result", result)
+        console.log(typeof result.timestamp)
+        lastReward = parseInt(result.timestamp, 10)
+      }
+    }
+
+    // const lastReward = yield call(
+    //   getLastRewardAsync,
+    //   instance,
+    //   0
+    // );
+
+    console.log("LastReard", lastReward);
+    callback(lastReward);
+  });
+}
+
 export function* getRewardBalances() {
   yield takeEvery(actions.GET_REWARD_BALANCE, function* ({ payload }) {
     const { vaultAddress, callback } = payload;
@@ -1135,6 +1198,7 @@ export default function* rootSaga() {
     fork(getAvailableRewardAmount),
     fork(getDepositBalances),
     fork(getRewardBalances),
+    fork(getLastReward),
     fork(getTotalDeposit),
     fork(approveToken),
     fork(depositToken),

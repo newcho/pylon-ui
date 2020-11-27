@@ -8,7 +8,8 @@ const actions = {
   GET_DEPOSIT_BALANCE: "GET_DEPOSIT_BALANCE",
   GET_REWARD_BALANCE: "GET_REWARD_BALANCE",
   GET_TOTAL_DEPOSIT: "GET_TOTAL_DEPOSIT",
-
+  GET_LAST_REWARD: "GET_LAST_REWARD",
+  
   APPROVE_TOKEN: "APPROVE_TOKEN",
   DEPOSIT_TOKEN: "DEPOSIT_TOKEN",
   DEPOSIT_TOKEN_ALL: "DEPOSIT_TOKEN_ALL",
@@ -49,6 +50,11 @@ const actions = {
   getDepositBalaces: (vaultAddress, tokenAddress, callback) => ({
     type: actions.GET_DEPOSIT_BALANCE,
     payload: { vaultAddress, tokenAddress, callback },
+  }),
+
+  getLastReward: (vaultAddress, callback) => ({
+    type: actions.GET_LAST_REWARD,
+    payload: { vaultAddress, callback },
   }),
 
   getRewardBalances: (vaultAddress, callback) => ({

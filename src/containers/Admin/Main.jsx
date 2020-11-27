@@ -15,6 +15,8 @@ const Main = () => {
   const [idx, setIdx] = useState(-1);
   const [amount, setAmount] = useState(0);
   const [allowance, setAllowance] = useState(0);
+  const [lastReward, setLastReward] = useState(0);
+
   const dispatch = useDispatch();
   const handleSelectToken = (idx) => {
     setIdx(idx);
@@ -27,23 +29,45 @@ const Main = () => {
         (allowance) => setAllowance(allowance)
       )
     );
+
+    dispatch(
+      pageActions.getLastReward(
+        vaultList[idx].address,
+        (lastReward) => setLastReward(lastReward)
+      )
+    );
   };
+
   const handleApprove = () => {
+
     dispatch(
       pageActions.approveToken(vaultList[idx].token1, vaultList[idx].address, callbackApprove)
     )
   };
   const handleSend = () => {
+    console.log("lastRewardTime", lastReward);
+
+    let currentTimestamp = Date.now() / 1000 | 0
+    
     if (idx === -1) {
       toast.error("Select a vault");
       return;
     }
 
-    if (amount > 0)
+    const nextAvailableTime = lastReward + 604800
+
+    if (currentTimestamp < nextAvailableTime) {
+      toast.error("You couldn't send reward yet.")
+      return;
+    }
+    
+    if (amount > 0) {
       dispatch(
         pageActions.sendReward(vaultList[idx].address, amount, callbackSend)
       );
-    else toast.error("Invaild amount");
+    } else {
+      toast.error("Invaild amount");
+    }
   };
 
   const callbackApprove = (status) => {
@@ -99,7 +123,9 @@ const Main = () => {
               {` `}
               <div className="title">{vaultList[idx].title}</div>
             </div>
-
+            <div className="vault-item">
+              Last Date: {lastReward === 0 ? 'None' : `${new Date(lastReward*1000).toLocaleDateString()} ${new Date(lastReward*1000).toLocaleTimeString()}`}
+            </div>
             <input
               type="text"
               value={amount}
