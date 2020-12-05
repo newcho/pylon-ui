@@ -144,7 +144,7 @@ export default function ({
           </div>
           <div className="stake-header-section">
             <TextBlock
-              title="33%"
+              title="35%"
               content={type == "FDI" ? "APY" : "Mining Seed APY"}
               colorTitle="#fd8300"
               colorContent="#00b9ea"

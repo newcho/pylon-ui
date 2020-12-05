@@ -247,7 +247,7 @@ export default function Home() {
                   <span className="value border">$328,500</span>
                 </div>
               </div>
-              <span className="profit">33% Profit in one year</span>
+              <span className="profit">35% Profit in one year</span>
             </div>
           </div>
         </div>
