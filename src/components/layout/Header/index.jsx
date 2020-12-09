@@ -17,6 +17,8 @@ const Header = ({ location }) => {
     if (location.pathname.indexOf("pvault") > 0)
       setMenuName("pvault");
     if (location.pathname.indexOf("partners") > 0) setMenuName("partners");
+    if (location.pathname.indexOf("faq") > 0) setMenuName("faq");
+    if (location.pathname.indexOf("see-mine") > 0) setMenuName("see-mine");
   }, [location.pathname]);
 
   return (
@@ -63,6 +65,14 @@ const Header = ({ location }) => {
                 className={cx("menu-link", { active: menuName === "partners" })}
               >
                 <Link to="/partners">PARTNERS</Link>
+              </li>
+              <li className={cx("menu-link", { active: menuName === "faq" })}>
+                <Link to={`/faq`}>FAQ</Link>
+              </li>
+              <li
+                className={cx("menu-link", { active: menuName === "see-mine" })}
+              >
+                <Link to={`/see-mine`}>See Mine</Link>
               </li>
             </ul>
           </nav>

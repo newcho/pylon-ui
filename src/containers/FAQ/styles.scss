@@ -1,0 +1,56 @@
+.faq-container {
+  width: 100%;
+
+  .content {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    summary {list-style: none}
+    summary::-webkit-details-marker {display: none; }
+
+    .section {
+      margin-bottom: 20px;
+
+      h1 {
+        color: #00b9eb;
+        font-size: 2rem;
+        line-height: 4rem;
+      }
+
+      .block {
+        padding-left: 15px;
+
+        summary {
+          color: #f27c07;
+          font-size: 1.5rem;
+          line-height: 3rem;
+          outline: none;
+          cursor: pointer;
+        }
+
+        p {
+          color: #fff;
+          font-size: 1.2rem;
+          line-height: 2.4rem;
+        }
+
+        strong {
+          color: #6674d7;
+        }
+
+        a {
+          color: cyan;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { ConnectedRouter } from "connected-react-router";
+import { Route, Switch } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -10,9 +9,11 @@ import Partners from "./containers/Partners";
 import YCRVVault from "./containers/YCRVVault";
 import PYLONVault from "./containers/PYLONVault";
 import FDIVault from "./containers/FDIVault";
+import FAQ from "./containers/FAQ";
+import SeeMine from "./containers/SeeMine";
 
 const PublicRoutes = ({ match }) => {
-// console.log('ddd', match.url);
+  // console.log('ddd', match.url);
   return (
     <>
       <Header />
@@ -24,6 +25,8 @@ const PublicRoutes = ({ match }) => {
         <Route exact path={`${match.url}fvault`} component={FDIVault} />
         <Route exact path={`${match.url}pvault`} component={PYLONVault} />
         <Route exact path={`${match.url}partners`} component={Partners} />
+        <Route exact path={`${match.url}faq`} component={FAQ} />
+        <Route exact path={`${match.url}see-mine`} component={SeeMine} />
       </Switch>
       <Footer />
     </>
