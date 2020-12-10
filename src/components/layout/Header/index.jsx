@@ -72,7 +72,7 @@ const Header = ({ location }) => {
               <li
                 className={cx("menu-link", { active: menuName === "see-mine" })}
               >
-                <Link to={`/see-mine`}>See Mine</Link>
+                <Link to={`/see-mine`}>SEE MINE</Link>
               </li>
             </ul>
           </nav>
