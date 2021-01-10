@@ -91,7 +91,7 @@ export default function Home() {
                   can expect PYLON to return up to 250% APY in a bull market and
                   {` `}
                   <br />
-                  about 53% APY in a bear market. So even when the{` `}
+                  about 117% APY in a bear market. So even when the{` `}
                   <br />
                   cryptocurrency markets are bleeding red, PYLON will continue
                   {` `}
@@ -247,7 +247,7 @@ export default function Home() {
                   <span className="value border">$328,500</span>
                 </div>
               </div>
-              <span className="profit">53% Profit in one year</span>
+              <span className="profit">117% Profit in one year</span>
             </div>
           </div>
         </div>
