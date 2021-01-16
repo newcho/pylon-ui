@@ -144,13 +144,13 @@ export default function ({
           </div>
           <div className="stake-header-section">
             {type!="FDI"?<TextBlock
-              title={item.tokenName == "PYLON" ? "160%" : "213%"}
+              title={item.tokenName == "PYLON" ? "101%" : "158%"}
               content="Vault APY"
               colorTitle="#fd8300"
               colorContent="#00b9ea"
             />:""}
             <TextBlock
-              title="117%"
+              title="99%"
               content={type == "FDI" ? "APY" : "Mining Seed APY"}
               colorTitle="#fd8300"
               colorContent="#00b9ea"
