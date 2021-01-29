@@ -47,13 +47,13 @@ const Header = ({ location }) => {
               {/* <li className={cx("menu-link", { active: menuName === "yvault" })}>
                 <Link to="/yvault">YCRV VAULT</Link>
               </li> */}
-              <li
+              {/* <li
                 className={cx("menu-link", {
                   active: menuName === "fvault",
                 })}
               >
                 <Link to="/fvault">FDI VAULT</Link>
-              </li>
+              </li> */}
               <li
                 className={cx("menu-link", {
                   active: menuName === "pvault",
