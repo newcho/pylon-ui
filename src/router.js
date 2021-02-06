@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer";
 import Home from "./containers/Home";
 import AboutPYLON from "./containers/AboutPYLON";
 import Partners from "./containers/Partners";
+import StableCoin from "./containers/StableCoin";
 import YCRVVault from "./containers/YCRVVault";
 import PYLONVault from "./containers/PYLONVault";
 import FDIVault from "./containers/FDIVault";
@@ -26,6 +27,7 @@ const PublicRoutes = ({ match }) => {
         <Route exact path={`${match.url}pvault`} component={PYLONVault} />
         <Route exact path={`${match.url}partners`} component={Partners} />
         <Route exact path={`${match.url}faq`} component={FAQ} />
+        <Route exact path={`${match.url}stablecoin`} component={StableCoin} />
         <Route exact path={`${match.url}see-mine`} component={SeeMine} />
       </Switch>
       <Footer />
