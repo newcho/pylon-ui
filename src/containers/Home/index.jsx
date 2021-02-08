@@ -54,7 +54,7 @@ export default function Home() {
                 stakers. This constant buying of PYLON from externally generated
                 {` `}
                 <br />
-                revenue guarantees your tokens have real value.{` `}
+                revenue gives your tokens real value.{` `}
               </p>
               <p>
                 Additionally, there are two other vaults which take in fees that{" "}
@@ -145,7 +145,7 @@ export default function Home() {
                     title={`HIGH`}
                     title2={`RETURN`}
                     subTitle="ANNUAL"
-                    content="GUARANTEED"
+                    content=""
                     background="#0540c8"
                     mainColor="#fff "
                     subColor="#7899de"
